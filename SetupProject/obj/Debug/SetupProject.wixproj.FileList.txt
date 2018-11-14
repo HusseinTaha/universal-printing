@@ -1,0 +1,6 @@
+C:\WorkSpace\PrintFileToPrinterSLN\SetupProject\bin\Debug\SetupProject.msi
+C:\WorkSpace\PrintFileToPrinterSLN\SetupProject\bin\Debug\SetupProject.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\SetupProject.wixproj.BindContentsFileListnull.txt
+obj\Debug\SetupProject.wixproj.BindOutputsFileListnull.txt
+obj\Debug\SetupProject.wixproj.BindBuiltOutputsFileListnull.txt

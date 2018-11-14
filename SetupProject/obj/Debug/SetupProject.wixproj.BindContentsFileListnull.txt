@@ -1,0 +1,2 @@
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\bin\Debug\PrintFileToPrinter.exe
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\bin\Debug\RawPrint.dll

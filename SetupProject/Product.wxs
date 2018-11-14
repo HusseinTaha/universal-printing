@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="FilePrintSetup" Language="1033" Version="1.0.0.0" Manufacturer="CoMrEd" 
+           UpgradeCode="ba497b67-6664-403c-8075-006ca756d367">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+      
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="FilePrintSetup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="CoMrEd" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+
+    <Feature Id="MainApplication" Title="Main Application" Level="1">
+      <ComponentRef Id="CMP_PrintFileToPrinterApplicationSetup" />
+      <ComponentGroupRef Id="DllsComponent"/>
+    </Feature>
+
+    <ComponentGroup Id="DllsComponent" Directory="INSTALLFOLDER" 
+                    Source="C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\bin\Debug">
+      <Component Id="RawPrint.dll">
+        <File Name="RawPrint.dll" />
+      </Component>
+    </ComponentGroup>
+    
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+        <Component Id="CMP_PrintFileToPrinterApplicationSetup">
+          <File Id="FILE_PrintFileToPrinterApplication.exe" Source="$(var.PrintFileToPrinter.TargetPath)" KeyPath="yes" />
+        </Component>
+
+        <Component Id="ProductComponent" Guid="{206C911C-56EF-44B8-9257-5FD214427965}">
+          <RegistryKey Root="HKCR"
+                Key="fileprintmagnet"
+                Action="createAndRemoveOnUninstall">
+            <RegistryValue Type="string" Name="URL Protocol" Value=""/>
+            <RegistryValue Type="string" Value="URL:file print from browser"/>
+            <RegistryKey Key="DefaultIcon">
+              <RegistryValue Type="string" Value="PrintFileToPrinter.exe" />
+            </RegistryKey>
+            <RegistryKey Key="shell\open\command">
+              <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]PrintFileToPrinter.exe&quot; &quot;%1&quot;" />
+            </RegistryKey>
+          </RegistryKey>
+        </Component>
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+		</ComponentGroup>
+	</Fragment>
+</Wix>

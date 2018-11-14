@@ -1,0 +1,7 @@
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\bin\Debug\PrintFileToPrinter.exe.config
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\bin\Debug\PrintFileToPrinter.exe
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\bin\Debug\PrintFileToPrinter.pdb
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\bin\Debug\RawPrint.dll
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\obj\Debug\PrintFileToPrinter.exe
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\obj\Debug\PrintFileToPrinter.pdb
+C:\WorkSpace\PrintFileToPrinterSLN\PrintFileToPrinter\obj\Debug\PrintFileToPrinter.csprojResolveAssemblyReference.cache
