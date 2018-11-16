@@ -26,6 +26,7 @@
     <Feature Id="MainApplication" Title="Main Application" Level="1">
       <ComponentRef Id="CMP_PrintFileToPrinterApplicationSetup" />
       <ComponentGroupRef Id="DllsComponent"/>
+      <ComponentGroupRef Id="printExeComponents"/>
     </Feature>
 
     <ComponentGroup Id="DllsComponent" Directory="INSTALLFOLDER" 
@@ -34,8 +35,46 @@
         <File Name="RawPrint.dll" />
       </Component>
     </ComponentGroup>
+
+    <ComponentGroup Id="printExeComponents" Directory="INSTALLFOLDER"
+                    Source="C:\WorkSpace\PrintFileToPrinterSLN\packages\PrintHtml-window-x86">
+      <Component Id="cabundle.crt">
+        <File Name="ca-bundle.crt" />
+      </Component>
+      <Component Id="libeay32.dll">
+        <File Name="libeay32.dll" />
+      </Component>
+      <Component Id="libgcc_s_dw2_1.dll">
+        <File Name="libgcc_s_dw2-1.dll" />
+      </Component>
+      <Component Id="libstdc_6.dll">
+        <File Name="libstdc++-6.dll" />
+      </Component>
+      <Component Id="libwinpthread_1.dll">
+        <File Name="libwinpthread-1.dll" />
+      </Component>
+      <Component Id="PrintHtml.exe">
+        <File Name="PrintHtml.exe" />
+      </Component>
+      <Component Id="QtCore4.dll">
+        <File Name="QtCore4.dll" />
+      </Component>
+      <Component Id="QtGui4.dll">
+        <File Name="QtGui4.dll" />
+      </Component>
+      <Component Id="QtNetwork4.dll">
+        <File Name="QtNetwork4.dll" />
+      </Component>
+      <Component Id="QtWebKit4.dll">
+        <File Name="QtWebKit4.dll" />
+      </Component>
+      <Component Id="ssleay32.dll">
+        <File Name="ssleay32.dll" />
+      </Component>
+    </ComponentGroup>
     
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
         <Component Id="CMP_PrintFileToPrinterApplicationSetup">
           <File Id="FILE_PrintFileToPrinterApplication.exe" Source="$(var.PrintFileToPrinter.TargetPath)" KeyPath="yes" />
         </Component>

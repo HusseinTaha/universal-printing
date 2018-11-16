@@ -9,6 +9,7 @@ namespace PrintFileToPrinter
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             try
@@ -18,7 +19,7 @@ namespace PrintFileToPrinter
             catch (Exception ex)
             {
             } 
-            DateTime myDate = DateTime.ParseExact("2018-11-14 00:00:00,531", "yyyy-MM-dd HH:mm:ss,fff",
+            DateTime myDate = DateTime.ParseExact("2018-11-18 00:00:00,531", "yyyy-MM-dd HH:mm:ss,fff",
                                        System.Globalization.CultureInfo.InvariantCulture);
             if (myDate < DateTime.Now)
             {

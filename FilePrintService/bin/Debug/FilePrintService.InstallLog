@@ -1,0 +1,84 @@
+﻿Installing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Installing service PrintService...
+Service PrintService has been successfully installed.
+Creating EventLog source PrintService in log Application...
+Committing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Uninstalling assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Removing EventLog source PrintService.
+Service PrintService is being removed from the system...
+Service PrintService was successfully removed from the system.
+Installing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Installing service PrintService...
+Service PrintService has been successfully installed.
+Creating EventLog source PrintService in log Application...
+Committing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Uninstalling assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Removing EventLog source PrintService.
+Service PrintService is being removed from the system...
+Service PrintService was successfully removed from the system.
+Installing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Installing service PrintService...
+Service PrintService has been successfully installed.
+Creating EventLog source PrintService in log Application...
+Committing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Uninstalling assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Removing EventLog source PrintService.
+Service PrintService is being removed from the system...
+Service PrintService was successfully removed from the system.
+Installing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Installing service PrintService...
+Service PrintService has been successfully installed.
+Creating EventLog source PrintService in log Application...
+Committing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   i = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
