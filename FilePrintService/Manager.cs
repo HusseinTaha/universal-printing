@@ -139,8 +139,9 @@ namespace FilePrintService
                     return p.ExitCode == 0;
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                Logger.Error("Manager.PrintHtmlPages =>", ex);
                 return false;
             }
         }
