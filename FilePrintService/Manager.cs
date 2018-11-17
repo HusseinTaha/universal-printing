@@ -124,7 +124,7 @@ namespace FilePrintService
             {
                 // Spawn the code to print the packing slips
                 var info = new ProcessStartInfo();
-                info.Arguments = "-p \"" + printer + "\" \"" + url + "\"";
+                info.Arguments = ConfigurationManager.AppSettings["MARGINS"] + " -p \"" + printer + "\" \"" + url + "\"";
                 //info.Arguments = "printername=\"" + printer + "\"   url=\"" + url + "\"";
                 var pathToExe = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                 info.FileName = Path.Combine(pathToExe, "PrintHtml.exe");

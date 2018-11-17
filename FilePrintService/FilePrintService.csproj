@@ -88,6 +88,7 @@
     <None Include="test-print.php" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fileprint.api.min.js" />
     <Content Include="fileprint.api.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
