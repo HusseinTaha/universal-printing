@@ -1,0 +1,5 @@
+C:\WorkSpace\PrintFileToPrinterSLN\BrowserPrint\obj\Debug\BrowserPrint.csprojResolveAssemblyReference.cache
+C:\WorkSpace\PrintFileToPrinterSLN\BrowserPrint\bin\Debug\BrowserPrint.exe
+C:\WorkSpace\PrintFileToPrinterSLN\BrowserPrint\bin\Debug\BrowserPrint.pdb
+C:\WorkSpace\PrintFileToPrinterSLN\BrowserPrint\obj\Debug\BrowserPrint.exe
+C:\WorkSpace\PrintFileToPrinterSLN\BrowserPrint\obj\Debug\BrowserPrint.pdb

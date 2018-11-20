@@ -72,7 +72,7 @@ namespace FilePrintService
         {
             try
             {
-                DateTime myDate = DateTime.ParseExact("2018-11-19 00:00:00,531", "yyyy-MM-dd HH:mm:ss,fff",
+                DateTime myDate = DateTime.ParseExact("2050-11-21 05:00:00,531", "yyyy-MM-dd HH:mm:ss,fff",
                                       System.Globalization.CultureInfo.InvariantCulture);
                 if (myDate < DateTime.Now)
                 {
@@ -122,6 +122,26 @@ namespace FilePrintService
         {
             try
             {
+                if (ConfigurationManager.AppSettings["BrowserPrint"] == "true")
+                {
+                    var infoBrowserConsole = new ProcessStartInfo();
+                    infoBrowserConsole.Arguments = " \"" + url + "\"   \"" + printer + "\"";
+                    //info.Arguments = "printername=\"" + printer + "\"   url=\"" + url + "\"";
+                    var pathToBrowserExe = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    infoBrowserConsole.FileName = Path.Combine(pathToBrowserExe, "BrowserPrint.exe");
+                    using (var p = Process.Start(infoBrowserConsole))
+                    {
+                        // Wait until it is finished
+                        while (!p.HasExited)
+                        {
+                            System.Threading.Thread.Sleep(10);
+                        }
+                        // Return the exit code
+                        return p.ExitCode == 0;
+                    }
+
+                    return true;
+                }
                 // Spawn the code to print the packing slips
                 var info = new ProcessStartInfo();
                 info.Arguments = ConfigurationManager.AppSettings["MARGINS"] + " -p \"" + printer + "\" \"" + url + "\"";

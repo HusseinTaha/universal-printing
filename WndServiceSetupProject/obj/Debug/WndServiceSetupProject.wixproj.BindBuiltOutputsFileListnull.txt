@@ -1,0 +1,2 @@
+C:\WorkSpace\PrintFileToPrinterSLN\WndServiceSetupProject\bin\Debug\WndServiceSetupProject.msi
+C:\WorkSpace\PrintFileToPrinterSLN\WndServiceSetupProject\bin\Debug\WndServiceSetupProject.wixpdb

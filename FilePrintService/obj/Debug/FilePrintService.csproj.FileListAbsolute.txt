@@ -9,8 +9,8 @@ C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\SuperWebSocket.dll
 C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\SuperSocket.Common.xml
 C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\SuperSocket.SocketBase.xml
 C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\SuperWebSocket.xml
-C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\obj\Debug\FilePrintService.csprojResolveAssemblyReference.cache
 C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\obj\Debug\FilePrintService.ProjectInstaller.resources
 C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\obj\Debug\FilePrintService.csproj.GenerateResource.Cache
 C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\obj\Debug\FilePrintService.exe
 C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\obj\Debug\FilePrintService.pdb
+C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\obj\Debug\FilePrintService.csprojResolveAssemblyReference.cache

@@ -1,0 +1,6 @@
+C:\WorkSpace\PrintFileToPrinterSLN\WndServiceSetupProject\bin\Debug\WndServiceSetupProject.msi
+C:\WorkSpace\PrintFileToPrinterSLN\WndServiceSetupProject\bin\Debug\WndServiceSetupProject.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\WndServiceSetupProject.wixproj.BindContentsFileListnull.txt
+obj\Debug\WndServiceSetupProject.wixproj.BindOutputsFileListnull.txt
+obj\Debug\WndServiceSetupProject.wixproj.BindBuiltOutputsFileListnull.txt

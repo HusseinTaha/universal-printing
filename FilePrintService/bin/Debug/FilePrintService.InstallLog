@@ -1,4 +1,12 @@
-﻿Installing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+﻿Uninstalling assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Removing EventLog source PrintService.
+Service PrintService is being removed from the system...
+Service PrintService was successfully removed from the system.
+Installing assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
 Affected parameters are:
    logtoconsole = 
    i = 
@@ -13,6 +21,15 @@ Affected parameters are:
    i = 
    assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
    logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Uninstalling assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Removing EventLog source PrintService.
+An exception occurred during the uninstallation of the System.Diagnostics.EventLogInstaller installer.
+System.Security.SecurityException: Requested registry access is not allowed.
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
 Uninstalling assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
 Affected parameters are:
    logtoconsole = 
@@ -82,3 +99,11 @@ Affected parameters are:
    i = 
    assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
    logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Uninstalling assembly 'C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.exe
+   logfile = C:\WorkSpace\PrintFileToPrinterSLN\FilePrintService\bin\Debug\FilePrintService.InstallLog
+Removing EventLog source PrintService.
+Service PrintService is being removed from the system...
+Service PrintService was successfully removed from the system.
