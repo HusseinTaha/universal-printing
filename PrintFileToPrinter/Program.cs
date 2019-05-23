@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Windows.Forms;
 
 namespace PrintFileToPrinter
 {
@@ -18,12 +19,9 @@ namespace PrintFileToPrinter
             }
             catch (Exception ex)
             {
-            } 
-            DateTime myDate = DateTime.ParseExact("2018-11-18 00:00:00,531", "yyyy-MM-dd HH:mm:ss,fff",
-                                       System.Globalization.CultureInfo.InvariantCulture);
-            if (myDate < DateTime.Now)
+            }
+            if (!FilePrintHelper.Checklisence())
             {
-                Logger.Error("License:", new Exception("License is expired please contact the administrator"));
                 return;
             }
 
@@ -31,6 +29,11 @@ namespace PrintFileToPrinter
             {
                 FilePrintHelper fileprint = new FilePrintHelper(args[0]);
                 fileprint.Manage();
+                //Console.ReadKey();
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainPage());
             }
 
         }

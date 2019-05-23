@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>page to print</title>
+</head>
+
+<body>
+
+    <select id="printersList">
+    </select>
+
+    <button onclick="print()">Print</button>
+
+    <button onclick="closeSocket();return false;">Close</button>
+
+    <script type="text/javascript" src="fileprint.api.js?v=2"></script>
+
+    <script type="text/javascript">
+        var fileprint = new FilePrint(function ready() {
+            //get printers
+            fileprint.getPrinters();
+        },
+        function listprinters(data) {
+            console.log(data);
+            fillPrinters(data.list);
+        });
+        fileprint.setup();
+
+
+        function closeSocket() {
+            fileprint.close()
+        }
+
+        function print() {
+
+            var e = document.getElementById("printersList");
+            var strPrinterNmae = e.options[e.selectedIndex].value;
+
+            fileprint.print(strPrinterNmae, 'http://localhost:7665/test.pdf');
+        }
+
+        function fillPrinters(list) {
+            var select = document.getElementById('printersList');
+
+            for (var i = 0; i < list.length; i++) {
+                var opt = document.createElement('option');
+                opt.value = list[i].name;
+                opt.innerHTML = list[i].name;
+                select.appendChild(opt);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

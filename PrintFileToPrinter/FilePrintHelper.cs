@@ -1,4 +1,5 @@
-﻿using Logs;
+﻿using FilePrintService;
+using Logs;
 using Microsoft.Win32;
 using PrintingFunctionality;
 using RawPrint;
@@ -12,6 +13,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using System.Web;
 using System.Windows.Forms;
 
 namespace PrintFileToPrinter
@@ -20,60 +22,27 @@ namespace PrintFileToPrinter
     {
         private string _printerName;
         private string _localFileName = "";
-        private string _url = "";
-        private string _data = "";
         public string _ajaxed = "0";
+        private int _port;
+        private WebSocketHelper myServer;
 
         public FilePrintHelper(string argstr)
         {
             try
             {
-                argstr = argstr.Replace("fileprintmagnet:", "");
+                argstr = argstr.Replace("sfileprintmagnet:", "");
+
+                var uri = new Uri("http://domain.test/Default.aspx?" + argstr);
+                var query = HttpUtility.ParseQueryString(uri.Query);
                 Logger.Log("Args:" + argstr);
-                string[] values = argstr.Split(new string[] { "=+=" }, StringSplitOptions.None);
-                foreach (var val in values)
+
+                var port = query.Get("p");
+
+                if (!string.IsNullOrEmpty(port))
                 {
-                    if (!string.IsNullOrEmpty(val))
-                    {
-                        string[] keyval = val.Split(new string[] { "_=" }, StringSplitOptions.None);
-                        switch (keyval[0])
-                        {
-                            case "url":
-                                this._url = keyval[1];
-                                break;
-                            case "data":
-                                this._data = keyval[1];
-                                break;
-                            case "printerName":
-                                this._printerName = keyval[1];
-                                break;
-                            case "ajaxed":
-                                this._ajaxed = keyval[1];
-                                break;
-                        }
-                    }
+                    _port = Convert.ToInt32(port);
                 }
-                //string filname = getExtension(_url);
-                this._localFileName = Path.Combine(System.IO.Path.GetTempPath(), Guid.NewGuid().ToString() + ".html");
-                Logger.Log("writing to :" + _localFileName);
-                if (!string.IsNullOrEmpty(_data))
-                {
-                    string d = Uri.UnescapeDataString(_data);
-                    File.WriteAllText(_localFileName, d);
-                    this._url = _localFileName;
-                }
-                else if (_ajaxed == "1")
-                {
-                    BrowserWrapper browser = new BrowserWrapper();
-                    Logger.Log("Loading to :" + _url);
-                    browser.NavigateAndWait(this._url);
-                    Logger.Log("Done loading to :" + _url);
-                    Thread.Sleep(1500);
-                    HtmlDocument doc = browser.Document;
-                    File.WriteAllText(_localFileName, doc.Body.OuterHtml.ToString());
-                    this._url = _localFileName;
-                    browser.Dispose();
-                }
+
             }
             catch (Exception ex)
             {
@@ -81,17 +50,39 @@ namespace PrintFileToPrinter
             }
         }
 
+        public static bool Checklisence()
+        {
+            try
+            {
+                DateTime myDate = DateTime.ParseExact("2050-11-21 05:00:00,531", "yyyy-MM-dd HH:mm:ss,fff",
+                                      System.Globalization.CultureInfo.InvariantCulture);
+                if (myDate < DateTime.Now)
+                {
+                    Logger.Error("License:", new Exception("License is expired please contact the administrator"));
+                    System.Environment.Exit(2);
+                    return false; ;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Manager.Start => Checking lisence", ex);
+                return false;
+            }
+        }
+
         public void Manage()
         {
             try
             {
-                //Logger.Log("Downloading:" + _url + "    into    " + _localFileName);
-                //using (WebClient web = new WebClient())
-                //{
-                //    web.DownloadFile(this._url, this._localFileName);
-                //}
 
-                this.Print();
+                if (_port != default(int))
+                {
+                    Logger.Log("Starting server" );
+                    myServer = new WebSocketHelper(_port, this);
+                    myServer.Setup();
+                    myServer.StartServer();
+                }
             }
             catch (Exception ex)
             {
@@ -99,8 +90,50 @@ namespace PrintFileToPrinter
             }
         }
 
-        public void Print()
+        public void StopAndClose()
         {
+            Logger.Log("Closing server" );
+            if (myServer != null)
+            {
+                myServer.StopServer();
+            }
+            System.Environment.Exit(2);
+        }
+
+        public List<Models.PrinterCls> ListPrinters()
+        {
+            List<Models.PrinterCls> printers = new List<Models.PrinterCls>();
+            var printerQuery = new ManagementObjectSearcher("SELECT * from Win32_Printer");
+            foreach (var printer in printerQuery.Get())
+            {
+                try
+                {
+                    var name = printer.GetPropertyValue("Name");
+                    var status = printer.GetPropertyValue("Status");
+                    var isDefault = printer.GetPropertyValue("Default");
+                    var isNetworkPrinter = printer.GetPropertyValue("Network");
+                    printers.Add(new Models.PrinterCls()
+                    {
+                        name = name.ToString(),
+                        status = status.ToString(),
+                        isOnline = printer.IsOnline(),
+                        isDefault = isDefault.ToString(),
+                        isNetwrokPrinter = isNetworkPrinter.ToString()
+                    });
+                    Console.WriteLine("{0} (Status: {1}, Default: {2}, Network: {3}",
+                                name, status, isDefault, isNetworkPrinter);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("ListPrinters", ex);
+                }
+            }
+            return printers;
+        }
+
+        public void Print(string printerName, string pdfUrl)
+        {
+            this._printerName = printerName;
             try
             {
                 bool printerPlugged = false;
@@ -133,7 +166,15 @@ namespace PrintFileToPrinter
                     return;
                 }
 
-                PrintHtmlPages(this._printerName, this._url);
+                this._localFileName = Path.Combine(System.IO.Path.GetTempPath(), Guid.NewGuid().ToString() + ".pdf");
+
+                Logger.Log("Downloading:" + pdfUrl + "    into    " + _localFileName);
+                Logger.Log("Printer:" + _printerName) ;
+                using (WebClient web = new WebClient())
+                {
+                    web.UseDefaultCredentials = true;
+                    web.DownloadFile(pdfUrl, this._localFileName);
+                }
 
                 //try
                 //{
@@ -141,15 +182,15 @@ namespace PrintFileToPrinter
                 //       Registry.LocalMachine.OpenSubKey(
                 //            @"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                 //            @"\App Paths\AcroRd32.exe").GetValue("").ToString(),
-                //       string.Format("/h /t \"{0}\" \"{1}\"", this._localFileName, this._printerName)); 
+                //       string.Format("/h /t \"{0}\" \"{1}\"", this._localFileName, this._printerName));
                 //}
                 //catch { } 
-                //IPrinter printDocument = new Printer();
+                IPrinter printDocument = new Printer();
 
                 //Printer.PrintFile(this._printerName, this._localFileName);
 
-                // Print the file
-                //printDocument.PrintRawFile(this._printerName, this._localFileName);
+                 //Print the file
+                printDocument.PrintRawFile(this._printerName, this._localFileName);
 
                 //PrintDocument printDocument = new PrintDocument();
                 //printDocument.PrintPage += new PrintPageEventHandler(OnPrintAll);

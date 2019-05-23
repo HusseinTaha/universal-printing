@@ -4,3 +4,5 @@ obj\Debug\Product.wixobj
 obj\Debug\SetupProject.wixproj.BindContentsFileListnull.txt
 obj\Debug\SetupProject.wixproj.BindOutputsFileListnull.txt
 obj\Debug\SetupProject.wixproj.BindBuiltOutputsFileListnull.txt
+C:\WorkSpace\PrintFileToPrinterSLN-Sockets\SetupProject\bin\Debug\SetupProject.msi
+C:\WorkSpace\PrintFileToPrinterSLN-Sockets\SetupProject\bin\Debug\SetupProject.wixpdb
