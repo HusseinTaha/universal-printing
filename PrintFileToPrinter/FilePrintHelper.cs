@@ -176,21 +176,69 @@ namespace PrintFileToPrinter
                     web.DownloadFile(pdfUrl, this._localFileName);
                 }
 
-                //try
-                //{
-                //    Process.Start(
-                //       Registry.LocalMachine.OpenSubKey(
-                //            @"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                //            @"\App Paths\AcroRd32.exe").GetValue("").ToString(),
-                //       string.Format("/h /t \"{0}\" \"{1}\"", this._localFileName, this._printerName));
-                //}
-                //catch { } 
-                IPrinter printDocument = new Printer();
+
+                //PrinterSettings printerSett = new PrinterSettings();
+
+                //printerSett.PrinterName = _printerName;
+                //printerSett.PrintFileName = Path.GetFileName(_localFileName);
+
+                //PrintDocument PrintDoc = new PrintDocument();
+                //PrintDoc.PrinterSettings = printerSett;
+                //PrintDoc.DocumentName = this._localFileName;// @"..\Resources\" + name;
+                //PrintDoc.PrinterSettings.PrinterName = _printerName;
+
+                //PrintDoc.Print();
+
+            //    string processFilename = Microsoft.Win32.Registry.LocalMachine
+            //.OpenSubKey("Software")
+            //.OpenSubKey("Microsoft")
+            //.OpenSubKey("Windows")
+            //.OpenSubKey("CurrentVersion")
+            //.OpenSubKey("App Paths")
+            //.OpenSubKey("AcroRd32.exe")
+            //.GetValue(String.Empty).ToString();
+
+            //    ProcessStartInfo info = new ProcessStartInfo();
+            //    info.Verb = "print";
+            //    info.FileName = processFilename;
+            //    info.Arguments = string.Format("/h /t \"{0}\" \"{1}\"", this._localFileName, this._printerName);
+            //    info.CreateNoWindow = true;
+            //    info.WindowStyle = ProcessWindowStyle.Hidden;
+            //    //(It won't be hidden anyway... thanks Adobe!)
+            //    info.UseShellExecute = false;
+
+            //    Process p = Process.Start(info);
+            //    p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                
+
+            //    int counter = 0;
+            //    while (!p.HasExited)
+            //    {
+            //        System.Threading.Thread.Sleep(1000);
+            //        counter += 1;
+            //        if (counter == 5) break;
+            //    }
+            //    if (!p.HasExited)
+            //    {
+            //        p.CloseMainWindow();
+            //        p.Kill();
+            //    }
+
+                try
+                {
+                    Process.Start(
+                       Registry.LocalMachine.OpenSubKey(
+                            @"SOFTWARE\Microsoft\Windows\CurrentVersion" +
+                            @"\App Paths\AcroRd32.exe").GetValue("").ToString(),
+                       string.Format("/h /t \"{0}\" \"{1}\"", this._localFileName, this._printerName));
+                }
+                catch { } 
+                //IPrinter printDocument = new Printer();
 
                 //Printer.PrintFile(this._printerName, this._localFileName);
 
                  //Print the file
-                printDocument.PrintRawFile(this._printerName, this._localFileName);
+                //printDocument.PrintRawFile(this._printerName, this._localFileName, Path.GetFileName(this._localFileName));
 
                 //PrintDocument printDocument = new PrintDocument();
                 //printDocument.PrintPage += new PrintPageEventHandler(OnPrintAll);

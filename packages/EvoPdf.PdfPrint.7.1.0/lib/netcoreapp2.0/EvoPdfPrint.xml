@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EvoPdfPrint</name>
+    </assembly>
+    <members>
+        <member name="T:EvoPdf.PdfPrint.ContextImpersonationLogonMode">
+            <summary>
+            The logon mode for impersonation
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfPrint.ContextImpersonationLogonMode.Automatic">
+            <summary>
+            Automatic logon
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfPrint.ContextImpersonationLogonMode.Explicit">
+            <summary>
+            Explicit logon
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.ContextImpersonationOptions">
+            <summary>
+            This class encapsulates the options to control the context impersonation during tool execution
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.ContextImpersonationOptions.CurrentUserImpersonation">
+            <summary>
+            A flag indicating if the tool should impersonate the current user during execution.
+            By default this property is false.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Username">
+            <summary>
+            The name of the user to logon before execution. The <see cref="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Domain"/> and <see cref="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Password"/> properties must also be set.
+            This property has priority over the <see cref="P:EvoPdf.PdfPrint.ContextImpersonationOptions.CurrentUserImpersonation"/> property. 
+            By default this property is not set.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Domain">
+            <summary>
+            The user Windows domain name. This property together with <see cref="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Username"/> property define the user to logon before execution.
+            If the user is not part of a Windows domain the machine name can be used.
+            By default this property is not set.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Password">
+            <summary>
+            The password of the user specified by <see cref="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Username"/> and <see cref="P:EvoPdf.PdfPrint.ContextImpersonationOptions.Domain"/> properties.
+            By default this property is not set.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.ContextImpersonationOptions.LogonMode">
+            <summary>
+            The logon mode of the user before execution. This property has effect only when a username for impersonation is specified.
+            The default logon mode is automatic.
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PagePrintedEventArgs">
+            <summary>
+            The <see cref="E:EvoPdf.PdfPrint.PdfPrint.PagePrintedEvent"/> event args
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintedEventArgs.EndPrinting">
+            <summary>
+            Gets or sets a value indicating whether the print job should be ended
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintedEventArgs.PageNumber">
+            <summary>
+            The page number of the current page being printed
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintedEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the print job should be canceled
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintedEventArgs.Graphics">
+            <summary>
+            Gets the System.Drawing.Graphics used to paint the page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintedEventArgs.MarginBounds">
+            <summary>
+            Gets the rectangular area that represents the portion of the page inside the margins
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintedEventArgs.PageBounds">
+            <summary>
+            Gets the rectangular area that represents the total area of the page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintedEventArgs.PageSettings">
+            <summary>
+            Gets the page settings for the current page
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PagePrintedEventHandler">
+            <summary>
+            The <see cref="E:EvoPdf.PdfPrint.PdfPrint.PagePrintedEvent"/> event delegate
+            </summary>
+            <param name="args">The event arguments object</param>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PrintColor">
+            <summary>
+            The PDF printing color
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfPrint.PrintColor.Color">
+            <summary>
+            Color
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfPrint.PrintColor.Mono">
+            <summary>
+            Black and white
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfPrint.PrintColor.Gray">
+            <summary>
+            Gray scale
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PagePrintingEventHandler">
+            <summary>
+            The <see cref="E:EvoPdf.PdfPrint.PdfPrint.PagePrintingEvent"/> event delegate
+            </summary>
+            <param name="args">The event arguments object</param>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PagePrintingEventArgs">
+            <summary>
+            The <see cref="E:EvoPdf.PdfPrint.PdfPrint.PagePrintingEvent"/> event args
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintingEventArgs.EndPrinting">
+            <summary>
+            Gets or sets a value indicating whether the print job should be ended
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintingEventArgs.PageNumber">
+            <summary>
+            The page number of the current page being printed
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintingEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the print job should be canceled
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintingEventArgs.Graphics">
+            <summary>
+            Gets the System.Drawing.Graphics used to paint the page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintingEventArgs.MarginBounds">
+            <summary>
+            Gets the rectangular area that represents the portion of the page inside the margins
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintingEventArgs.PageBounds">
+            <summary>
+            Gets the rectangular area that represents the total area of the page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PagePrintingEventArgs.PageSettings">
+            <summary>
+            Gets the page settings for the current page
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PdfDocumentInfo">
+            <summary>
+            This class encapsulates various properties of the PDF document being converted or searched
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.Title">
+            <summary>
+            The PDF document title
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.Subject">
+            <summary>
+            The PDF document subject
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.Keywords">
+            <summary>
+            The PDF document keywords
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.Author">
+            <summary>
+            The PDF document author
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.Creator">
+            <summary>
+            The PDF document creator
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.Producer">
+            <summary>
+            The PDF document producer
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.CreationDate">
+            <summary>
+            The PDF document creation date
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.LastModifiedDate">
+            <summary>
+            The PDF document last modification date
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfDocumentInfo.PageCount">
+            <summary>
+            The number of pages in PDF document
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PdfPrint">
+            <summary>
+            This class encapsulates the necessary functionality to silently print PDF documents
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.#ctor">
+            <summary>
+            The PdfPrint class constructor
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.GetPageCount(System.String)">
+            <summary>
+            Gets the number of PDF pages of a PDF file
+            </summary>
+            <param name="pdfFile">The full path of the PDF file</param>
+            <returns>The number of pages in PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.GetPageCount(System.IO.Stream)">
+            <summary>
+            Gets the number of pages of a PDF document in a stream
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document</param>
+            <returns>The number of pages in PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.GetPageCount(System.Byte[])">
+            <summary>
+            Gets the number of PDF pages of a PDF document
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document</param>
+            <returns>The number of pages in PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.String)">
+            <summary>
+            Prints all the pages of a PDF file using the current printer and page settings
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to be printed</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.IO.Stream)">
+            <summary>
+            Prints all the pages of PDF document in a stream using the current printer and page settings
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document to be printed</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.Byte[])">
+            <summary>
+            Prints all the pages in a PDF document using the current printer and page settings
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document to be printed</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.String,System.Int32)">
+            <summary>
+            Prints the pages of a PDF file starting from a given PDF page number to the end using the current printer and page settings
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to be printed</param>
+            <param name="startPageNumber">The start page number</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.IO.Stream,System.Int32)">
+            <summary>
+            Prints the pages of a PDF document in a stream starting from a given PDF page number to the end of the PDF document 
+            using the current printer and page settings
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document to be printed</param>
+            <param name="startPageNumber">The start page number</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.Byte[],System.Int32)">
+            <summary>
+            Prints the pages of a PDF document starting from a given PDF page number to the end of the PDF document
+            using the current printer and page settings
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document to be printed</param>
+            <param name="startPageNumber">The start page number</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.String,System.Int32,System.Int32)">
+            <summary>
+            Prints a range of pages of a PDF file using the current printer and page settings
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to be printed</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Prints a range of pages of a PDF document in a stream using the current printer and page settings
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document to be printed</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrint.Print(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Prints a range of pages of a PDF document using the current printer and page settings
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document to be printed</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+        </member>
+        <member name="E:EvoPdf.PdfPrint.PdfPrint.PagePrintingEvent">
+            <summary>
+            The event which is raised right before printing the PDF page. In the event handler you can end or cancel printing job
+            </summary>
+        </member>
+        <member name="E:EvoPdf.PdfPrint.PdfPrint.PagePrintedEvent">
+            <summary>
+            The event which is raised right after the PDF page has been printed. In the event handler you can end or cancel printing job
+            </summary>
+        </member>
+        <member name="E:EvoPdf.PdfPrint.PdfPrint.PreparePagePrintingEvent">
+            <summary>
+            The event which is raised immediately before each PagePrintingEvent event. In the event handler you can set the page settings for
+            the page being printed, cancel or end printing job
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.DefaultPageSettings">
+            <summary>
+            The page settings that are used as defaults for all pages to be printed
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.DocumentName">
+            <summary>
+            The document name to display in a print status dialog box or printer queue while printing the document 
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.PrinterSettings">
+            <summary>
+            The settings of the printer that prints the document
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.RunTimeoutSec">
+            <summary>
+            The maximum time allowed for this tool to run
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.UserPassword">
+            <summary>
+            The user password to be used to open a password protected PDF document
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.OwnerPassword">
+            <summary>
+            The owner password to be used to open a password protected PDF document
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.LicenseKey">
+            <summary>
+            Gets or sets the license key string received from vendor. 
+            If this property is null the tool will automatically enter in evaluation mode
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.ImpersonationOptions">
+            <summary>
+            The impersonation options used during tool execution
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.PdfToolFullPath">
+            <summary>
+            Sets the full path of  the .dat helper file. By default this file is expected to be found 
+            in the same folder with .dll assembly.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.PdfDocumentInfo">
+            <summary>
+            Gets the object encapsulating the PDF document properties. This objects is populated after 
+            tool execution finished
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.Color">
+            <summary>
+            The PDF printing color. The default value is Color
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.Resolution">
+            <summary>
+            The PDF printing resolution in DPI. The default value is 300
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PdfPrint.ShowStatusDialog">
+            <summary>
+            Set this property to false to disable the status dialog during printing. The default value is true
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PdfPrintException">
+            <summary>
+            This class represents an exception thrown by the PDF printer
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrintException.#ctor(System.String)">
+            <summary>
+            Constructs a PDF printer exception with the given error message
+            </summary>
+            <param name="message">The exception message</param>
+        </member>
+        <member name="M:EvoPdf.PdfPrint.PdfPrintException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs a PDF printer exception with the given error message and the given inner exception object
+            </summary>
+            <param name="message">The exception message</param>
+            <param name="innerException">The inner exception that triggered this exception</param>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PreparePagePrintingEventArgs">
+            <summary>
+            The <see cref="E:EvoPdf.PdfPrint.PdfPrint.PagePrintedEvent"/> event args
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PreparePagePrintingEventArgs.EndPrinting">
+            <summary>
+            Gets or sets a value indicating whether the print job should be ended
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PreparePagePrintingEventArgs.PageNumber">
+            <summary>
+            The page number of the current page being printed
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PreparePagePrintingEventArgs.PageSettings">
+            <summary>
+            Gets or sets the page settings for the page to be printed
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfPrint.PreparePagePrintingEventArgs.PdfContentSize">
+            <summary>
+            Gets the PDF content size which can be used for example to decide if the page should be printed landscape or portrait
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfPrint.PreparePagePrintingEventHandler">
+            <summary>
+            The <see cref="E:EvoPdf.PdfPrint.PdfPrint.PreparePagePrintingEvent"/> event delegate
+            </summary>
+            <param name="args">The event arguments object</param>
+        </member>
+    </members>
+</doc>
