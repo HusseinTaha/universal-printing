@@ -8,7 +8,7 @@ echo Installing WindowsService...
  
 
 echo ---------------------------------------------------
-InstallUtil /i "%mypath%\FilePrintService.exe"
+InstallUtil /i "%mypath%\UniversalFileToPrinter.exe"
 echo ---------------------------------------------------
 
 sc start PrintService

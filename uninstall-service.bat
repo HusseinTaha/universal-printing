@@ -6,6 +6,6 @@ set PATH=%PATH%;%DOTNETFX2%
 set mypath=%cd%
 echo Installing WindowsService...
 echo ---------------------------------------------------
-InstallUtil /u "%mypath%\FilePrintService.exe"
+InstallUtil /u "%mypath%\UniversalFileToPrinter.exe"
 echo ---------------------------------------------------
 echo Done. 

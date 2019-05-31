@@ -1,6 +1,6 @@
 ﻿using Logs;
 using Newtonsoft.Json;
-using PrintFileToPrinter;
+using UniversalFileToPrinter;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 using SuperSocket.SocketBase.Logging;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace FilePrintService
+namespace UniversalFileToPrinter
 {
     public class WebSocketHelper
     {
@@ -66,7 +66,7 @@ namespace FilePrintService
         {
             try
             {
-                var data = JsonConvert.DeserializeObject<FilePrintService.Models.FilePrintRequest>(e);
+                var data = JsonConvert.DeserializeObject<UniversalFileToPrinter.Models.FilePrintRequest>(e);
 
                 if (!FilePrintHelper.Checklisence())
                 {

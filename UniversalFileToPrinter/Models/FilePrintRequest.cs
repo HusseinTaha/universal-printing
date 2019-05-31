@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FilePrintService.Models
+namespace UniversalFileToPrinter.Models
 {
     public class FilePrintRequest
     {

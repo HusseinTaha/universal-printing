@@ -1,4 +1,4 @@
-﻿namespace PrintFileToPrinter
+﻿namespace UniversalFileToPrinter
 {
     partial class MainPage
     {

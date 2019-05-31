@@ -6,7 +6,7 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>374e75f1-358e-4b67-900b-436f19a952fd</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>SetupProject</OutputName>
+    <OutputName>UniversalFileToPrinterSetup</OutputName>
     <OutputType>Package</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -22,8 +22,8 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PrintFileToPrinter\PrintFileToPrinter.csproj">
-      <Name>PrintFileToPrinter</Name>
+    <ProjectReference Include="..\UniversalFileToPrinter\UniversalFileToPrinter.csproj">
+      <Name>UniversalFileToPrinter</Name>
       <Project>{07b1232c-936e-4cf3-92ce-327012622f3f}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>

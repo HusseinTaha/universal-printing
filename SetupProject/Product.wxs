@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="FilePrintSetup" Language="1033" Version="1.0.0.0" Manufacturer="CoMrEd" 
+	<Product Id="*" Name="UniversalFileToPrinterSetup" Language="1033" Version="1.0.0.0" Manufacturer="CoMrEd" 
            UpgradeCode="ba497b67-6664-403c-8075-006ca756d367">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [UniversalFileToPrinter] is already installed." />
       
 		<MediaTemplate EmbedCab="yes" />
 
@@ -16,7 +16,7 @@
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Fileprint_CoMrEd" />
+				<Directory Id="INSTALLFOLDER" Name="UniversalFileToPrinter" />
 			</Directory>
 		</Directory>
 	</Fragment>
@@ -24,13 +24,13 @@
 	<Fragment>
 
     <Feature Id="MainApplication" Title="Main Application" Level="1">
-      <ComponentRef Id="CMP_PrintFileToPrinterApplicationSetup" />
+      <ComponentRef Id="CMP_UniversalFileToPrinterApplicationSetup" />
       <ComponentGroupRef Id="DllsComponent"/>
       <ComponentGroupRef Id="printExeComponents"/>
     </Feature>
 
     <ComponentGroup Id="DllsComponent" Directory="INSTALLFOLDER" 
-                    Source="C:\WorkSpace\PrintFileToPrinterSLN-Sockets\PrintFileToPrinter\bin\Debug">
+                    Source="C:\WorkSpace\UniveralFileToPrinterSLN\UniversalFileToPrinter\bin\Debug">
       <Component Id="RawPrint.dll">
         <File Name="RawPrint.dll" />
       </Component>
@@ -67,7 +67,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="printExeComponents" Directory="INSTALLFOLDER"
-                    Source="C:\WorkSpace\PrintFileToPrinterSLN\packages\PrintHtml-window-x86">
+                    Source="C:\WorkSpace\UniveralFileToPrinterSLN\packages\PrintHtml-window-x86">
       <Component Id="cabundle.crt">
         <File Name="ca-bundle.crt" />
       </Component>
@@ -105,8 +105,8 @@
     
 
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-        <Component Id="CMP_PrintFileToPrinterApplicationSetup">
-          <File Id="FILE_PrintFileToPrinterApplication.exe" Source="$(var.PrintFileToPrinter.TargetPath)" KeyPath="yes" />
+        <Component Id="CMP_UniversalFileToPrinterApplicationSetup">
+          <File Id="FILE_UniversalFileToPrinterApplication.exe" Source="$(var.UniversalFileToPrinter.TargetPath)" KeyPath="yes" />
         </Component>
 
         <Component Id="ProductComponent" Guid="{206C911C-56EF-44B8-9257-5FD214427965}">
@@ -116,10 +116,10 @@
             <RegistryValue Type="string" Name="URL Protocol" Value=""/>
             <RegistryValue Type="string" Value="URL:file print from browser"/>
             <RegistryKey Key="DefaultIcon">
-              <RegistryValue Type="string" Value="PrintFileToPrinter.exe" />
+              <RegistryValue Type="string" Value="UniversalFileToPrinter.exe" />
             </RegistryKey>
             <RegistryKey Key="shell\open\command">
-              <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]PrintFileToPrinter.exe&quot; &quot;%1&quot;" />
+              <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]UniversalFileToPrinter.exe&quot; &quot;%1&quot;" />
             </RegistryKey>
           </RegistryKey>
         </Component>

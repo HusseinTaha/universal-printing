@@ -1,7 +1,7 @@
-﻿using FilePrintService;
+﻿using UniversalFileToPrinter;
 using Logs;
 using Microsoft.Win32;
-using PrintingFunctionality;
+using UniversalFileToPrinter;
 using RawPrint;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Threading;
 using System.Web;
 using System.Windows.Forms;
 
-namespace PrintFileToPrinter
+namespace UniversalFileToPrinter
 {
     public class FilePrintHelper
     {

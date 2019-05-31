@@ -4,7 +4,7 @@ using System.Text;
 using System.Management;
 using Logs;
 
-namespace PrintingFunctionality
+namespace UniversalFileToPrinter
 {
     public static class PrinterHelper
     {

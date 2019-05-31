@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PrintFileToPrinter
+namespace UniversalFileToPrinter
 {
     public partial class MainPage : Form
     {
