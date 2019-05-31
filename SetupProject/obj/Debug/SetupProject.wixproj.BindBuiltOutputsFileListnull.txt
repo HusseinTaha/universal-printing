@@ -1,2 +1,0 @@
-C:\WorkSpace\UniversalFileToPrinterSLN-Sockets\SetupProject\bin\Debug\SetupProject.msi
-C:\WorkSpace\UniversalFileToPrinterSLN-Sockets\SetupProject\bin\Debug\SetupProject.wixpdb
