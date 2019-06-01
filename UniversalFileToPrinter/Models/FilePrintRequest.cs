@@ -12,6 +12,7 @@ namespace UniversalFileToPrinter.Models
         public string printer { get; set; }
         public string extension { get; set; }
         public byte[] dataBin { get; set; }
+        public string dataSTR { get; set; }
         public object info { get; set; }
         public string type { get; set; }
     }

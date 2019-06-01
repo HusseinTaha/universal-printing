@@ -24,7 +24,7 @@ var objToSend = {
     fileUrl: '',
     printer: '',
     extension: '',
-    dataBin: null,
+    dataSTR: null,
     info: {},
     type: ''
 };
@@ -57,7 +57,7 @@ FilePrint.prototype.initSendObj = function () {
     objToSend.extension = '';
     objToSend.type = '';
     objToSend.info = {};
-    objToSend.dataBin = null;
+    objToSend.dataSTR = null;
 };
 
 FilePrint.prototype.getRandomPortNumber = function (min, max) {
@@ -114,15 +114,19 @@ FilePrint.prototype.print = function (printerName, fileUrl, extension, type, inf
     xhr.onload = function (e) {
         if (this.status == 200) {
             // get binary data as a response
-            objToSend.dataBin = this.response;
-            self.socket.send(JSON.stringify(objToSend));
-            //var blob = this.response; console.log(blob); console.log(new Uint8Array(blob));
+            blobUtil.blobToBase64String(this.response).then(function (base64str) {
+                // success
+                objToSend.dataSTR = base64str;
+                self.socket.send(JSON.stringify(objToSend));
+            }).catch(function (err) {
+                // error
+            });
         }
     };
 
     xhr.send();
 
-    self.socket.send(JSON.stringify(objToSend));
+    //self.socket.send(JSON.stringify(objToSend));
     return self;
 };
 

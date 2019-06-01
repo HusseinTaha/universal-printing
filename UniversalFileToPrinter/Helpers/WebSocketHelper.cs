@@ -80,6 +80,10 @@ namespace UniversalFileToPrinter
                         session.Send(JsonConvert.SerializeObject(data));
                         break;
                     case "Print":
+                        if (!string.IsNullOrEmpty(data.dataSTR))
+                        {
+                            data.dataBin = Convert.FromBase64String(data.dataSTR);
+                        }
                         _printHelper.Print(data.type, data.extension, data.printer, data.fileUrl, data.dataBin, data.info, session);
                         break;
                     case "ListPrinters":
