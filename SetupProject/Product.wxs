@@ -30,7 +30,7 @@
     </Feature>
 
     <ComponentGroup Id="DllsComponent" Directory="INSTALLFOLDER" 
-                    Source="C:\WorkSpace\UniveralFileToPrinterSLN\UniversalFileToPrinter\bin\Debug">
+                    Source="$(var.UniversalFileToPrinter.TargetDir)">
       <Component Id="RawPrint.dll">
         <File Name="RawPrint.dll" />
       </Component>
@@ -70,7 +70,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="printExeComponents" Directory="INSTALLFOLDER"
-                    Source="C:\WorkSpace\UniveralFileToPrinterSLN\References\PrintHtml-window-x86">
+                    Source="$(var.SolutionDir)\References\PrintHtml-window-x86">
       <Component Id="cabundle.crt">
         <File Name="ca-bundle.crt" />
       </Component>
