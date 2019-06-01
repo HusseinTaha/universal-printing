@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalFileToPrinter", "U
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "SetupProject", "SetupProject\SetupProject.wixproj", "{374E75F1-358E-4B67-900B-436F19A952FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowserPrint", "BrowserPrint\BrowserPrint.csproj", "{B6600F5F-4E56-488D-B21A-D9B2AD00F262}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{374E75F1-358E-4B67-900B-436F19A952FD}.Release|Mixed Platforms.Build.0 = Release|x86
 		{374E75F1-358E-4B67-900B-436F19A952FD}.Release|x86.ActiveCfg = Release|x86
 		{374E75F1-358E-4B67-900B-436F19A952FD}.Release|x86.Build.0 = Release|x86
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B6600F5F-4E56-488D-B21A-D9B2AD00F262}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

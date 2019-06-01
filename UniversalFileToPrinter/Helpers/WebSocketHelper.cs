@@ -80,12 +80,13 @@ namespace UniversalFileToPrinter
                         session.Send(JsonConvert.SerializeObject(data));
                         break;
                     case "Print":
-                        _printHelper.Print(data.printer, data.pdfUrl);
+                        _printHelper.Print(data.type, data.extension, data.printer, data.fileUrl, data.dataBin, data.info, session);
                         break;
                     case "ListPrinters":
                         session.Send(JsonConvert.SerializeObject(new
                         {
                             list = _printHelper.ListPrinters(),
+                            isError = false,
                             action = "ListPrinters"
                         }));
                         break;

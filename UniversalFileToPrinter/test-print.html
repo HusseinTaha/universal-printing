@@ -12,21 +12,26 @@
 
     <button onclick="print()">Print</button>
 
+    <button onclick="listPrinters()">List Printers</button>
+
     <button onclick="closeSocket();return false;">Close</button>
 
     <script type="text/javascript" src="fileprint.api.js?v=2"></script>
 
     <script type="text/javascript">
-        var fileprint = new FilePrint(function ready() {
-            //get printers
-            fileprint.getPrinters();
-        },
-        function listprinters(data) {
-            console.log(data);
-            fillPrinters(data.list);
+        var fileprint = new FilePrint(0, function ready() {
+
+        }, function erroResult(error) {
+
         });
         fileprint.setup();
 
+        function listPrinters() {
+            fileprint.getPrinters(function listprinters(data) {
+                console.log(data);
+                fillPrinters(data.list);
+            });
+        }
 
         function closeSocket() {
             fileprint.close()
@@ -35,9 +40,15 @@
         function print() {
 
             var e = document.getElementById("printersList");
-            var strPrinterNmae = e.options[e.selectedIndex].value;
+            var strPrinterName = e.options[e.selectedIndex].value;
 
-            fileprint.print(strPrinterNmae, 'http://localhost:7665/test.pdf');
+            //fileprint.printPDF(strPrinterName, 'http://localhost:7665/test.pdf', true/*raw-printing*/);
+
+            //fileprint.printHTML(strPrinterName, 'http://localhost:7665/test.html', false/*raw-printing*/, false, '-l 0.11 -r 0.05');
+
+            //fileprint.printIMAGE(strPrinterName, 'http://localhost:7665/test.jpg', "jpg", true/*raw-printing*/, 200, 100);
+
+            fileprint.printWORD(strPrinterName, 'http://localhost:7665/test.docx', "docx", false/*raw-printing*/);
         }
 
         function fillPrinters(list) {

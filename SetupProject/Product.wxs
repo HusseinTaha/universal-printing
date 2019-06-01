@@ -34,6 +34,9 @@
       <Component Id="RawPrint.dll">
         <File Name="RawPrint.dll" />
       </Component>
+      <Component Id="BrowserPrint.exe">
+        <File Name="BrowserPrint.exe" />
+      </Component>
       <Component Id="Newtonsoft.Json.dll">
         <File Name="Newtonsoft.Json.dll" />
       </Component>
@@ -67,7 +70,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="printExeComponents" Directory="INSTALLFOLDER"
-                    Source="C:\WorkSpace\UniveralFileToPrinterSLN\packages\PrintHtml-window-x86">
+                    Source="C:\WorkSpace\UniveralFileToPrinterSLN\References\PrintHtml-window-x86">
       <Component Id="cabundle.crt">
         <File Name="ca-bundle.crt" />
       </Component>
@@ -111,7 +114,7 @@
 
         <Component Id="ProductComponent" Guid="{206C911C-56EF-44B8-9257-5FD214427965}">
           <RegistryKey Root="HKCR"
-                Key="sfileprintmagnet"
+                Key="ufileprintmagnet"
                 Action="createAndRemoveOnUninstall">
             <RegistryValue Type="string" Name="URL Protocol" Value=""/>
             <RegistryValue Type="string" Value="URL:file print from browser"/>

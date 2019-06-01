@@ -2,9 +2,10 @@
  * Created By CoMrEd
  */
 
-var createLink = function (magnet, port) {
+var createLink = function (magnet, port, timeout) {
     var finger = magnet;
     finger += "p=" + port;
+    finger += "&timeout=" + timeout;
     if (typeof jQuery == 'function') {
         var a = $('<a style="display:none" href="' + finger + '">tet</a>');
         $('body').append(a);
@@ -20,22 +21,43 @@ var createLink = function (magnet, port) {
 
 var objToSend = {
     action: '',
-    pdfUrl: '',
-    printer: ''
+    fileUrl: '',
+    printer: '',
+    extension: '',
+    dataBin: null,
+    info: {},
+    type: ''
 };
 
 var log = function (msg) {
-    console.log("FilePrint: " + msg);
+    console.log("FilePrint: ", msg);
 };
 
 
-var FilePrint = function (readyCallback, listPrintersCallback) {
-    this.magnetKey = 'sfileprintmagnet:';
+var FilePrint = function (timeout, readyCallback, onErrorResult) {
+    this.magnetKey = 'ufileprintmagnet:';
     this.port = this.getRandomPortNumber(8000, 9500);
-    this.listPrintersCallback = listPrintersCallback;
+    this.onErrorResult = onErrorResult;
     this.readyCallback = readyCallback;
     this.retry = 3;
+    this.timeout = timeout;
     return this;
+};
+
+FilePrintTypes = {};
+FilePrintTypes.PDF = "PDF";
+FilePrintTypes.HTML = "HTML";
+FilePrintTypes.WORD = "WORD";
+FilePrintTypes.IMAGE = "IMAGE";
+
+FilePrint.prototype.initSendObj = function () {
+    objToSend.action = '';
+    objToSend.fileUrl = '';
+    objToSend.printer = '';
+    objToSend.extension = '';
+    objToSend.type = '';
+    objToSend.info = {};
+    objToSend.dataBin = null;
 };
 
 FilePrint.prototype.getRandomPortNumber = function (min, max) {
@@ -43,28 +65,72 @@ FilePrint.prototype.getRandomPortNumber = function (min, max) {
 };
 
 FilePrint.prototype.setup = function () {
-    var link = createLink(this.magnetKey, this.port);
+    var self = this;
+    var link = createLink(this.magnetKey, this.port, this.timeout);
     link.click();
     link.parentNode.removeChild(link);
     //link.remove();
-    this.connect();
+    setTimeout(function () { self.connect() }, 200);
     return this;
 };
 
-FilePrint.prototype.print = function (printerName, pdfFile) {
+FilePrint.prototype.printPDF = function (printerName, fileUrl, useRaw) {
     var self = this;
+    return self.print(printerName, fileUrl, "pdf", FilePrintTypes.PDF, { useRaw: useRaw });
+};
+
+FilePrint.prototype.printHTML = function (printerName, fileUrl, useRaw, useBrowserPrint, margins) {
+    var self = this;
+    return self.print(printerName, fileUrl, "html", FilePrintTypes.HTML,
+        { useRaw: useRaw, useBrowserPrint: useBrowserPrint, margins: margins });
+};
+
+FilePrint.prototype.printIMAGE = function (printerName, fileUrl, extension, useRaw, width, height) {
+    var self = this;
+    return self.print(printerName, fileUrl, extension, FilePrintTypes.IMAGE,
+        { useRaw: useRaw, width: width, height: height });
+};
+
+FilePrint.prototype.printWORD = function (printerName, fileUrl, extension, useRaw) {
+    var self = this;
+    return self.print(printerName, fileUrl, extension, FilePrintTypes.WORD,
+        { useRaw: useRaw });
+};
+
+FilePrint.prototype.print = function (printerName, fileUrl, extension, type, info) {
+    var self = this;
+    self.initSendObj();
     objToSend.action = 'Print';
-    objToSend.pdfUrl = pdfFile;
+    objToSend.fileUrl = fileUrl;
     objToSend.printer = printerName;
+    objToSend.extension = extension;
+    objToSend.type = type;
+    objToSend.info = info;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', fileUrl, true);
+    xhr.responseType = 'blob';
+
+    xhr.onload = function (e) {
+        if (this.status == 200) {
+            // get binary data as a response
+            objToSend.dataBin = this.response;
+            self.socket.send(JSON.stringify(objToSend));
+            //var blob = this.response; console.log(blob); console.log(new Uint8Array(blob));
+        }
+    };
+
+    xhr.send();
+
     self.socket.send(JSON.stringify(objToSend));
     return self;
 };
 
-FilePrint.prototype.getPrinters = function () {
+FilePrint.prototype.getPrinters = function (listPrintersCallback) {
     var self = this;
+    self.initSendObj();
+    self.listPrintersCallback = listPrintersCallback;
     objToSend.action = 'ListPrinters';
-    objToSend.pdfUrl = '';
-    objToSend.printer = '';
     self.socket.send(JSON.stringify(objToSend));
     return self;
 };
@@ -72,10 +138,8 @@ FilePrint.prototype.getPrinters = function () {
 FilePrint.prototype.close = function () {
     var self = this;
     if (self.connected && self.socket != null) {
-        
+        self.initSendObj();
         objToSend.action = 'Stop';
-        objToSend.pdfUrl = '';
-        objToSend.printer = '';
         self.socket.send(JSON.stringify(objToSend));
         //self.socket.close();
     }
@@ -97,11 +161,8 @@ FilePrint.prototype.connect = function () {
         var received_msg = evt.data;
         var result = JSON.parse(received_msg);
         if (result.isError != undefined && result.isError == true) {
-            self.onResult && self.onResult({
-                isError: true,
-                msg: result.message
-            });
-            log(result.message);
+            self.onErrorResult && self.onErrorResult(result);
+            log(result);
             return;
         }
         switch (result.action) {

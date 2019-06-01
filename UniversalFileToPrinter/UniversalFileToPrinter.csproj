@@ -34,24 +34,32 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RawPrint, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RawPrint.0.2.0.0\lib\net40\RawPrint.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="SuperSocket.Common">
-      <HintPath>..\packages\WebSockets\SuperSocket.Common.dll</HintPath>
+    <Reference Include="SuperSocket.Common, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\WebSockets\SuperSocket.Common.dll</HintPath>
     </Reference>
-    <Reference Include="SuperSocket.SocketBase">
-      <HintPath>..\packages\WebSockets\SuperSocket.SocketBase.dll</HintPath>
+    <Reference Include="SuperSocket.SocketBase, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\WebSockets\SuperSocket.SocketBase.dll</HintPath>
     </Reference>
-    <Reference Include="SuperSocket.SocketEngine">
-      <HintPath>..\packages\WebSockets\SuperSocket.SocketEngine.dll</HintPath>
+    <Reference Include="SuperSocket.SocketEngine, Version=1.5.1.0, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\WebSockets\SuperSocket.SocketEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SuperWebSocket">
-      <HintPath>..\packages\WebSockets\SuperWebSocket.dll</HintPath>
+    <Reference Include="SuperWebSocket, Version=0.7.0.0, Culture=neutral, PublicKeyToken=7ba53b9a7cef5d1c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\WebSockets\SuperWebSocket.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -65,7 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FilePrintHelper.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="Helpers\BasePrinting.cs" />
+    <Compile Include="Helpers\CastHelper.cs" />
+    <Compile Include="Helpers\RAWPrinting.cs" />
+    <Compile Include="Helpers\PDFPrinting.cs" />
+    <Compile Include="Helpers\WORDPrinting.cs" />
+    <Compile Include="Helpers\HTMLPrinting.cs" />
+    <Compile Include="Helpers\IMAGEPrinting.cs" />
+    <Compile Include="Models\FilePrintResponse.cs" />
+    <Compile Include="Utils\Logger.cs" />
     <Compile Include="MainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,10 +90,10 @@
     </Compile>
     <Compile Include="Models\FilePrintRequest.cs" />
     <Compile Include="Models\PrinterCls.cs" />
-    <Compile Include="PrinterHelper.cs" />
+    <Compile Include="Helpers\PrinterHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebSocketHelper.cs" />
+    <Compile Include="Helpers\WebSocketHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -95,6 +111,12 @@
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrowserPrint\BrowserPrint.csproj">
+      <Project>{b6600f5f-4e56-488d-b21a-d9b2ad00f262}</Project>
+      <Name>BrowserPrint</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
