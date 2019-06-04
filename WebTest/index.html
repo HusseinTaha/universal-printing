@@ -14,13 +14,13 @@
 
     <button onclick="listPrinters()">List Printers</button>
 
-    <button onclick="closeSocket();return false;">Close</button>
+    <button onclick="closeSocket();return false;">Close</button> 
 
-    <script type="text/javascript" src="blob-util.min.js"></script>
-    <script type="text/javascript" src="fileprint.api.js?v=2"></script>
+    <script type="text/javascript" src="Scripts/blob-util.min.js"></script>
+    <script type="text/javascript" src="Scripts/fileprint.api.js?v=2"></script>
 
     <script type="text/javascript">
-        var fileprint = new FilePrint(0 /*timeout for closing*/, false /*useBinary for getting the file.*/, function ready() {
+        var fileprint = new FilePrint(0 /*timeout for closing*/, true /*useBinary for getting the file.*/, function ready() {
 
         }, function erroResult(error) {
 
