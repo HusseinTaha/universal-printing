@@ -34,8 +34,9 @@ var log = function (msg) {
 };
 
 
-var FilePrint = function (timeout, readyCallback, onErrorResult) {
+var FilePrint = function (timeout, useBinary, readyCallback, onErrorResult) {
     this.magnetKey = 'ufileprintmagnet:';
+    this.useBinary = useBinary;
     this.port = this.getRandomPortNumber(8000, 9500);
     this.onErrorResult = onErrorResult;
     this.readyCallback = readyCallback;

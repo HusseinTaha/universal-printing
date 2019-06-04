@@ -20,7 +20,7 @@
     <script type="text/javascript" src="fileprint.api.js?v=2"></script>
 
     <script type="text/javascript">
-        var fileprint = new FilePrint(0, function ready() {
+        var fileprint = new FilePrint(0 /*timeout for closing*/, false /*useBinary for getting the file.*/, function ready() {
 
         }, function erroResult(error) {
 
